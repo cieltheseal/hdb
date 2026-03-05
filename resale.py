@@ -30,7 +30,35 @@ resale['flat_type'] = resale['flat_type'].str.replace('MULTI-GENERATION', 'MULTI
 resale["flat_model"] = resale["flat_model"].str.upper()
 resale['flat_type'] = resale['flat_type'].str.capitalize().str.replace(' ', '-')
 resale['town'] = resale['town'].str.title()
-resale.drop(columns=["block", "lease_commence_date"], inplace=True)
+
+def get_midpoint(storey_str):
+    try:
+        # Split "04-06" into ["04", "06"]
+        start, end = storey_str.split(' TO ')
+        return (int(start) + int(end)) / 2
+    except:
+        return None
+
+resale['avg_storey'] = resale['storey_range'].apply(get_midpoint).astype(int)
+
+
+# Removing flats which were apparently sold before MOP
+# 1. Condition for lease > 1971, not a small flat, and lease > 95
+# (Focuses on 3-room and larger flats that shouldn't have such high leases)
+cond1 = (resale['lease_commence_date'] > 1971) & (~resale['flat_type'].isin(['1-room', '2-room'])) & (resale['remaining_lease'] > 95)
+
+# 2. Condition for lease > 1971 and remaining_lease > 97
+cond2 = (resale['lease_commence_date'] > 1971) & (resale['remaining_lease'] > 97)
+
+# 3. Condition for lease > 2010 and remaining_lease > 95
+cond3 = (resale['lease_commence_date'] > 2010) & (resale['remaining_lease'] > 95)
+
+resale = resale[~(cond1 | cond2 | cond3)].copy()
+resale.drop(columns=["block"], inplace=True)
+
+resale['lease_commence_date'] = resale['lease_commence_date'].fillna(
+    resale['year'] - (99 - resale['remaining_lease'])
+)
 
 ### 2019 planning area updates (Fix Kallang and assign Central Area)
 resale.loc[resale['town'].str.contains('Kallang', case=False, na=False), 'town'] = 'Kallang'
@@ -65,5 +93,7 @@ resale.loc[resale['street_name'] == 'TG PAGAR PLAZA', 'town'] = 'Downtown Core'
 resale.loc[resale['street_name'] == 'UPP CROSS ST', 'town'] = 'Outram'
 resale.loc[resale['street_name'] == 'VEERASAMY RD', 'town'] = 'Rochor'
 resale.loc[resale['street_name'] == 'WATERLOO ST', 'town'] = 'Rochor'
+
+
 
 resale.to_csv("data/resale_prices.csv")

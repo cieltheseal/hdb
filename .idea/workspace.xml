@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9716c45-7858-4f40-9f98-3ddec92ad3e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/hdb.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/area.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cpi.py" beforeDir="false" afterPath="$PROJECT_DIR$/cpi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/cpi.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/cpi.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resale_prices.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/resale_prices.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputs/viz.twb" beforeDir="false" afterPath="$PROJECT_DIR$/outputs/viz.twb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputs/~viz__17520.twbr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resale.py" beforeDir="false" afterPath="$PROJECT_DIR$/resale.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +46,7 @@
     "Python.cpi.executor": "Run",
     "Python.main.executor": "Run",
     "Python.resale.executor": "Run",
+    "Python.stats.executor": "Run",
     "Python.test.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",

@@ -30,7 +30,7 @@ df.to_csv("raw/ConsumerPriceIndexCPI2024AsBaseYearMonthly.csv")
 
 df = pd.read_csv("raw/ConsumerPriceIndexCPI2024AsBaseYearMonthly.csv")
 df['DataSeries'] = df['DataSeries'].str.strip()
-target_rows = ['All Items', 'Accommodation', 'All Items Less Accommodation']
+target_rows = ['All Items']
 df = df[df['DataSeries'].isin(target_rows)]
 
 df = get_jan_columns_post_1990(df)
